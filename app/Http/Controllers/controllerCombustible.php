@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Session;
 use App\Http\Requests\RequestCombustibleCreate;
 use App\Http\Requests\RequestCombustibleUpdate;
+use  PDF;
 
 class controllerCombustible extends Controller
 {
@@ -61,5 +62,12 @@ class controllerCombustible extends Controller
         Combustible::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('combustibles.index');
+    }
+    public function pdf()
+    {
+        $combustibles=Combustible::orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.combustibles', compact('combustibles'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('combustibles.pdf');
     }
 }

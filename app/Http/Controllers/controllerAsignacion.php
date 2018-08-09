@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Proyecto;
 use Session;
 use App\AsignacionUser;
+use App\AsignacionMaquinaria;
 use App\User;
+use Illuminate\Support\Facades\DB;
+use  PDF;
+
 class controllerAsignacion extends Controller
 {
     public function index()
@@ -24,9 +28,10 @@ class controllerAsignacion extends Controller
     }
     public function personal($id)
     {
-        $usuarios=User::all();
+        $usuarios=User::where('activo',1)->get();
         $proyecto=Proyecto::where('id',$id)->first();
         $asignaciones=AsignacionUser::where('proyecto_id',$id)->get();
+        $maquinarias=AsignacionMaquinaria::where('proyecto_id',$id)->get();
         foreach($asignaciones as $asignacion)
         {
             foreach($usuarios as $usuario)
@@ -37,7 +42,7 @@ class controllerAsignacion extends Controller
                 }
             }
         }
-        return view('panel.asignacion.personal',compact('usuarios','asignaciones','proyecto'));
+        return view('panel.asignacion.personal',compact('usuarios','asignaciones','proyecto','maquinarias'));
     }
     public function asigUsuario($proyecto,$user)
     {
@@ -45,11 +50,24 @@ class controllerAsignacion extends Controller
             'usuario_id'=>$user,
             'proyecto_id'=>$proyecto
         ]);
+        $usuario=User::find($user);
+        if(!is_null($usuario->maquinaria_id))
+        {
+            AsignacionMaquinaria::create(
+                [
+                    'maquinaria_id'=>$usuario->maquinaria_id,
+                    'proyecto_id'=>$proyecto,
+                ]);
+        }
         return redirect()->route('asigPersonal',$proyecto);
     }
     public function asigDelete($asignacion,$proyecto)
     {
-        AsignacionUser::find($asignacion)->delete();
+        $asignacion=AsignacionUser::find($asignacion);
+        $usuario=User::find($asignacion->usuario_id);
+        $asigMaquinaria=AsignacionMaquinaria::where('maquinaria_id',$usuario->maquinaria_id)->where('proyecto_id',
+        $proyecto)->delete();
+        $asignacion->delete();
         return redirect()->route('asigPersonal',$proyecto);
     }
 }

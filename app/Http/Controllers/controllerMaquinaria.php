@@ -9,6 +9,8 @@ use Session;
 use App\Http\Requests\RequestMaquinariaCreate;
 use App\Http\Requests\RequestMaquinariaUpdate;
 use App\Combustible;
+use  PDF;
+
 class controllerMaquinaria extends Controller
 {
     public function __construct()
@@ -91,5 +93,12 @@ class controllerMaquinaria extends Controller
         Maquinaria::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('maquinarias.index');
+    }
+    public function pdf()
+    {
+        $maquinarias=Maquinaria::orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.maquinarias', compact('maquinarias'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('maquinarias.pdf');
     }
 }

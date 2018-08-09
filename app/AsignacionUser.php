@@ -11,4 +11,12 @@ class AsignacionUser extends Model
         'usuario_id',
         'proyecto_id',
     ];
+    public function usuario()
+    {
+        return $this->belongsTo(User::class,'usuario_id');
+    }
+    public function proyecto()
+    {
+        return $this->belongsTo(Proyecto::class,'proyecto_id');
+    }
 }

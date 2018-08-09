@@ -13,6 +13,10 @@
                 <h2>Contenedores Registrados</h2>
             </div>
             <div class="col-sm-6">
+                <div class="pull-left">
+                    <br>
+                    <a href="{{route('tanquepdf')}}" class="btn btn-info"><i class="zmdi zmdi-file"></i> Reporte</a>
+                </div>
                 <div class="pull-right">
                     <br>
                     <a href="{{route('contenedores.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>
@@ -39,12 +43,12 @@
                     <td>{{$tanque->id}}</td>
                     <td class="text-center">{{$tanque->capacidad}} litros</td>
                     <td class="text-center">{{$tanque->total}} litros</td>
-                    <td class="text-center">{{$tanque->combustible_id}}</td>
-                    <td class="text-center">{{$tanque->proyecto_id}}</td>
-                    <td  class="text-center">
+                    <td class="text-center">{{$tanque->combustible->tipo}}</td>
+                    <td class="text-center">{{$tanque->proyecto->nombre}}</td>
+                    <td class="text-center">
                     </td>
                 </tr>
-                    @include('panel.contendores.delete')
+                    @include('panel.tanques.delete')
                 @endforeach
 
             </tbody>
@@ -68,10 +72,9 @@
             formatters: {
 
                 "commands": function(column, row) {
-                        var edit="<a href=\"/panel/contendores/"+row.id+"/edit\" class=\"btn btn-icon command-edit waves-effect waves-circle\"><span style=\"color: #00bcd4;\" class=\"zmdi zmdi-edit\"></span></a> " ;
 
                         var borrar = "<a data-toggle=\"modal\" data-target=\"#modal-delete-"+row.id+"\" class=\"btn btn-icon command-delete waves-effect waves-circle\" ><span style=\"color:red;\" class=\"zmdi zmdi-delete\"></span></a>";
-                        return  edit+" "+borrar;
+                        return  borrar;
                 },
             },
             labels: {

@@ -34,7 +34,7 @@
 
             <ul class="dropdown-menu pull-right dm-icon">
                 <li>
-                    <a href="profile-about.html"><i class="zmdi zmdi-account"></i> Ver Perfil</a>
+                    <a href="#"><i class="zmdi zmdi-account"></i> Ver Perfil</a>
                 </li>
                 <li>
                     <a href="{{route('logout')}}"><i class="zmdi zmdi-time-restore"></i> Salir</a>
@@ -42,7 +42,4 @@
             </ul>
         </li>
     </ul>
-
-
-
 </header>

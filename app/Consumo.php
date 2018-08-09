@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Tanque;
 
 class Consumo extends Model
 {
@@ -10,7 +11,21 @@ class Consumo extends Model
     protected $fillable=[
         'kilometraje',
         'cantidad',
-        'maquinaria_id',
+        'usuario_id',
+        'administrador_id',
         'tanque_id',
+        'proyecto_id',
     ];
+    public function tanque()
+    {
+        return $this->belongsTo(Tanque::class,'tanque_id');
+    }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class,'usuario_id');
+    }
+    public function proyecto()
+    {
+        return $this->belongsTo(Proyecto::class,'proyecto_id');
+    }
 }

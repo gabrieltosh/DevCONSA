@@ -39,7 +39,7 @@
                                  <li>
                                     <i class="zmdi zmdi-view-list"></i>
                                     <address class="m-b-0 ng-binding">
-                                        <strong>Maquinaria :</strong> {{$usuario->maquinaria_id}}
+                                        <strong>Maquinaria N° Placa:</strong> {{$usuario->maquinaria->placa}}
                                     </address>
                                 </li>
                                 @endif

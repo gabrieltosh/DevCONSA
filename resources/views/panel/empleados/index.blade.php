@@ -13,6 +13,10 @@
                 <h2>Empleados Registrados</h2>
             </div>
             <div class="col-sm-6">
+                <div class="pull-left">
+                    <br>
+                    <a href="{{route('empleadopdf')}}" class="btn btn-info"><i class="zmdi zmdi-file"></i> Reporte</a>
+                </div>
                 <div class="pull-right">
                     <br>
                     <a href="{{route('empleados.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>

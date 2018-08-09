@@ -10,7 +10,7 @@ use Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\RequestGerenteCreate;
 use App\Http\Requests\RequestGerenteUpdate;
-
+use  PDF;
 class controllerAdministradores extends Controller
 {
     public function __construct()
@@ -99,5 +99,12 @@ class controllerAdministradores extends Controller
         User::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('administradores.index');
+    }
+    public function pdf()
+    {
+        $usuarios=User::where('tipo','administrador')->orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.administradores', compact('usuarios'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('administradores.pdf');
     }
 }

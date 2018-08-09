@@ -13,6 +13,10 @@
                 <h2>Proyectos Registrados</h2>
             </div>
             <div class="col-sm-6">
+                <div class="pull-left">
+                    <br>
+                    <a href="{{route('proyectopdf')}}" class="btn btn-info"><i class="zmdi zmdi-file"></i> Reporte</a>
+                </div>
                 <div class="pull-right">
                     <br>
                     <a href="{{route('proyectos.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>
@@ -39,7 +43,7 @@
                 <tr>
                     <td>{{$proyecto->id}}</td>
                     <td class="text-center">{{$proyecto->nombre}}</td>
-                    <td class="text-center">{{$proyecto->longitud}}</td>
+                    <td class="text-center">{{$proyecto->longitud}} km</td>
                     <td class="text-center">{{$proyecto->numeroContrato}}</td>
                     <td class="text-center">{{$proyecto->time}}</td>
                     <td  class="text-center">

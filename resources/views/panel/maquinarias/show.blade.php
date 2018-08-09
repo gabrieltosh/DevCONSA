@@ -18,7 +18,7 @@
                                     <strong>Marca : </strong>{{ucwords($maquinaria->marca)}}
                                 </li>
                                 <li class="ng-binding"><i class="zmdi zmdi-view-list"></i>
-                                    <strong>Tipo de Combustible : </strong>{{$maquinaria->combustible_id}}
+                                    <strong>Tipo de Combustible : </strong>{{$maquinaria->combustible->tipo}}
                                 </li>
                                 <li class="ng-binding"><i class="zmdi zmdi-view-list"></i>
                                     <strong>Kilometros Recorridos : </strong>{{$maquinaria->kilometraje}} Km

@@ -13,6 +13,10 @@
                 <h2>Combustibles Registrados</h2>
             </div>
             <div class="col-sm-6">
+                <div class="pull-left">
+                    <br>
+                    <a href="{{route('combustiblepdf')}}" class="btn btn-info"><i class="zmdi zmdi-file"></i> Reporte</a>
+                </div>
                 <div class="pull-right">
                     <br>
                     <a href="{{route('combustibles.create')}}" class="btn btn-info"><i class="zmdi zmdi-plus"></i> Nuevo Registro</a>

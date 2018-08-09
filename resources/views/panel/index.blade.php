@@ -1,5 +1,6 @@
 @extends('panel.template')
 @section('contenido')
+<!--
 <div class="card">
     <div class="card-header">
         <h2>Sales Statistics <small>Vestibulum purus quam scelerisque, mollis nonummy metus</small></h2>
@@ -604,5 +605,5 @@
             <a href="#" class="view-more"><i class="zmdi zmdi-long-arrow-right"></i> View Article...</a>
         </div>
     </div>
-</div>
+</div>-->
 @stop

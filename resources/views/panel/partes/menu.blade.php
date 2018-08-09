@@ -33,10 +33,16 @@
                 <li class="{{active('proyectos.*')}}"><a href="{{route('proyectos.index')}}">Proyecto</a></li>
                 <li class="{{active('maquinarias.*')}}"><a href="{{route('maquinarias.index')}}">Maquinaria</a></li>
                 <li class="{{active('combustibles.*')}}"><a href="{{route('combustibles.index')}}">Combustible</a></li>
+                <li class="{{active('contenedores.*')}}"><a href="{{route('contenedores.index')}}">Contenedores</a></li>
+
             </ul>
         </li>
-        <li class="">
-            <a href=""><i class="zmdi zmdi-home"></i> Gestion de Consumo</a>
+        <li class="sub-menu {{active(['panel/asignaciones','panel/asignaciones/*','panel/consumos','panel/consumos/proyecto/*'])}}">
+            <a href="#" data-ma-action="submenu-toggle"><i class="zmdi zmdi-view-compact"></i> Gestion de Proyectos</a>
+            <ul>
+                <li class="{{active(['panel/asignaciones','panel/asignaciones/*'])}}"><a href="{{route('asignaciones')}}">Asignaciones</a></li>
+                <li class="{{active(['panel/consumos','panel/consumos/proyecto/*'])}}"><a href="{{route('consumoProyectos')}}">Consumos</a></li>
+            </ul>
         </li>
     </ul>
 </aside>

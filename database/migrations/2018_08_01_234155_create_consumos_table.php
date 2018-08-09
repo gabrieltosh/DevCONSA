@@ -18,9 +18,12 @@ class CreateConsumosTable extends Migration
             $table->increments('id');
             $table->string('kilometraje');
             $table->string('cantidad');
-            $table->unsignedInteger('maquinaria_id');
+            $table->string('administrador_id');
+            $table->unsignedInteger('usuario_id');
             $table->unsignedInteger('tanque_id');
-            $table->foreign('maquinaria_id')->references('id')->on('maquinarias');
+            $table->unsignedInteger('proyecto_id');
+            $table->foreign('proyecto_id')->references('id')->on('proyectos');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('tanque_id')->references('id')->on('tanques');
             $table->timestamps();
         });

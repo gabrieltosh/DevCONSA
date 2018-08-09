@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Session;
 use App\Http\Requests\RequestProyectosCreate;
 use App\Http\Requests\RequestProyectosUpdate;
+use  PDF;
 
 class controllerProyectos extends Controller
 {
@@ -67,5 +68,12 @@ class controllerProyectos extends Controller
         Proyecto::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('proyectos.index');
+    }
+    public function pdf()
+    {
+        $proyectos=Proyecto::orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.proyectos', compact('proyectos'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('proyectos.pdf');
     }
 }

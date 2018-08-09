@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Carbon\Carbon;
+use App\Maquinaria;
+use App\AsignacionUser;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -30,7 +33,14 @@ class User extends Authenticatable
         'activo',
         'maquinaria_id',
     ];
-
+    public function maquinaria()
+    {
+        return $this->belongsTo(Maquinaria::class,'maquinaria_id');
+    }
+    public function asignaciones()
+    {
+        return $this->hasMany(AsignacionUser::class.'id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

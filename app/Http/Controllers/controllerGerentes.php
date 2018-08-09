@@ -10,6 +10,7 @@ use App\Maquinaria;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\RequestGerenteCreate;
 use App\Http\Requests\RequestGerenteUpdate;
+use  PDF;
 
 class controllerGerentes extends Controller
 {
@@ -99,5 +100,12 @@ class controllerGerentes extends Controller
         User::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('gerentes.index');
+    }
+    public function pdf()
+    {
+        $usuarios=User::where('tipo','gerente')->orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.gerentes', compact('usuarios'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('gerentes.pdf');
     }
 }

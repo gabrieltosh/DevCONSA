@@ -10,6 +10,8 @@ use App\Http\Requests\RequestTanqueCreate;
 use App\Http\Requests\RequestTanqueUpdate;
 use App\Proyecto;
 use App\Combustible;
+use  PDF;
+
 class controllerTanque extends Controller
 {
     public function __construct()
@@ -31,6 +33,7 @@ class controllerTanque extends Controller
     public function store(RequestTanqueCreate $request)
     {
         Tanque::create([
+            'nombre'=>$request->nombre,
             'capacidad'=>$request->capacidad,
             'total'=>$request->capacidad,
             'proyecto_id'=>$request->proyecto_id,
@@ -53,6 +56,7 @@ class controllerTanque extends Controller
     public function update(RequestTanqueUpdate $request, $id)
     {
         Tanque::findOrFail($id)->fill([
+            'nombre'=>$request->nombre,
             'capacidad'=>$request->capacidad,
             'total'=>$request->capacidad,
             'proyecto_id'=>$request->proyecto_id,
@@ -66,5 +70,12 @@ class controllerTanque extends Controller
         Tanque::findOrFail($id)->delete();
         Alert::success('Exito!!','Registro eliminado correctamente');
         return redirect()->route('contenedores.index');
+    }
+    public function pdf()
+    {
+        $tanques=Tanque::orderBy('created_at','desc')->get();
+        $pdf = PDF::loadView('pdf.tanques', compact('tanques'));
+        $pdf->setPaper('letter', 'landscape');
+        return $pdf->download('contenedores.pdf');
     }
 }

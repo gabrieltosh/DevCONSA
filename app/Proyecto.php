@@ -30,4 +30,12 @@ class Proyecto extends Model
         $suma=strtotime('+'.$this->plazo.'month',strtotime($fecha));
         return date('Y-m-j',$suma);
     }
+    public function asignaciones()
+    {
+        return $this->hasMany(AsignacionMaquinaria::class,'id');
+    }
+    public function asignacionesUser()
+    {
+        return $this->hasMany(AsignacionUser::class,'id');
+    }
 }

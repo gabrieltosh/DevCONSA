@@ -4,7 +4,7 @@
                 <span class="input-group-addon"><i class="zmdi zmdi-format-color-fill"></i></span>
                 <div class="fg-line">
                     <label for=""><strong>Nombre del Contenedor : </strong></label>
-                    {!!Form::text('capacidad',null,['class'=>'form-control','placeholder'=>'Nombre del Contenedor'])!!}
+                    {!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre del Contenedor'])!!}
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
            <span class="input-group-addon"><i class="zmdi zmdi-money"></i></span>
            <div class="fg-line">
                 <label for=""><strong>Proyecto a ser Destinado: </strong></label>
-               {!!Form::select('proyecto',$proyectos,null,['class'=>'form-control'])!!}
+               {!!Form::select('proyecto_id',$proyectos,null,['class'=>'form-control'])!!}
            </div>
        </div>
 

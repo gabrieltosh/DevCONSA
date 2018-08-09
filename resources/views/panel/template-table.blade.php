@@ -13,11 +13,12 @@
         <link href="{{asset('vendors/bootgrid/jquery.bootgrid.min.css')}}" rel="stylesheet">
 
         <link href="{{asset('vendors/bower_components/google-material-color/dist/palette.css')}}" rel="stylesheet">
+        <link href="{{asset('vendors/bower_components/chosen/chosen.min.css')}}" rel="stylesheet">
 
         <!-- CSS -->
         <link href="{{asset('css/app.min.1.css')}}" rel="stylesheet">
         <link href="{{asset('css/app.min.2.css')}}" rel="stylesheet">
-        
+
 
     </head>
     <body data-ma-header="teal">
@@ -100,6 +101,7 @@
         <script src="{{asset('vendors/bootstrap-growl/bootstrap-growl.min.js')}}"></script>
         <script src="{{asset('vendors/bootgrid/jquery.bootgrid.updated.min.js')}}"></script>
         <script src="{{asset('js/jqueryvalidator.js')}}"></script>
+        <script src="{{asset('vendors/bower_components/chosen/chosen.jquery.min.js')}}"></script>
         <!-- Placeholder for IE9 -->
         <!--[if IE 9 ]>
             <script src="{{asset('vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js')}}"></script>

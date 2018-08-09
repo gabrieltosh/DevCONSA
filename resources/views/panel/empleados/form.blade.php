@@ -125,7 +125,7 @@
        <div class="input-group">
            <span class="input-group-addon"><i class="zmdi zmdi-pin-drop"></i></span>
            <div class="fg-line">
-                <label for=""><strong>Seleccionar Maquinaria : </strong></label>
+                <label for=""><strong>Seleccionar Maquinaria (N°de Placa) : </strong></label>
                <div class="select">
                    {!!Form::select('maquinaria_id',$maquinarias,null,['class'=>'chosen'])!!}
                </div>
